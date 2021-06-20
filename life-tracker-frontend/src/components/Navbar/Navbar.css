@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+.test{
+    position:relative;
+    display:inline-block;
+    color: black;
+    font-family: 'Lato', sans-serif;
+  }
+  .test::before{
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #02C98D;
+        visibility: "hidden";
+        transition: all 0.3s ease-in-out;
+      
+  }
+  .test:hover::before{
+    visibility: visible;
+        width: 100%;
+  }
+
+  .navmenu { margin: 0 auto }
+  .navlink { display: flex; justify-content: center }
+  
