@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import {AppBar, Toolbar, Typography, Button} from "@material-ui/core";
 import Grid   from '@material-ui/core/Grid';
 import { makeStyles } from "@material-ui/core";
 import './Navbar.css'; 
 import codepath from "../../assets/codepath.svg"
 import classNames from 'classnames'; //css and material ui style
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -77,7 +77,7 @@ export default function ButtonAppBar() {
           <Typography  className={classNames(classes.typography, "test", "topnav-centered")} variant="h5">Sleep</Typography>
           </Grid>
           <Grid item xs={1}>
-          <Button className={classes.button} variant="contained" color="primary">Sign In</Button>
+          <Button className={classes.button} variant="contained" color="primary"> Sign In </Button>
           </Grid>
           <Grid item xs={1}>
           <Button className={classes.button}  variant="contained" color="primary">Register</Button>
