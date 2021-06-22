@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core";
 import './Navbar.css'; 
 import codepath from "../../assets/codepath.svg"
 import classNames from 'classnames'; //css and material ui style
-// import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button:{
     borderRadius: 35,
-    backgroundColor: "#0BC18A",
+    backgroundColor: "#2CB164",
     padding: "6 6px",
     fontSize: "12px"
   }
@@ -61,8 +61,9 @@ export default function ButtonAppBar() {
         <Grid container className={classes.root} spacing={2}>
         <Grid item xs={12}>
         <Grid container justify="center" spacing={2}>
-          
-            <img src={codepath} alt="logo" />
+            <Link to="/">
+            <img src={codepath}  alt="logo" />
+            </Link>
           
         <Grid item xs={2}>
           <Typography  className={classNames(classes.typography, "test", "topnav-centered")} variant="h5">Activity</Typography> 
@@ -80,7 +81,7 @@ export default function ButtonAppBar() {
           <Button className={classes.button} variant="contained" color="primary"> Sign In </Button>
           </Grid>
           <Grid item xs={1}>
-          <Button className={classes.button}  variant="contained" color="primary">Register</Button>
+          <Button component={ Link } to="/register" className={classes.button}  variant="contained" color="primary">Register</Button>
           </Grid>
           </Grid>
       </Grid>

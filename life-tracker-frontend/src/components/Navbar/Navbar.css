@@ -22,6 +22,9 @@
         width: 100%;
   }
 
-  .navmenu { margin: 0 auto }
+  .navmenu { 
+        margin: 0 auto;
+        margin-Bottom: 2%  }
+        
   .navlink { display: flex; justify-content: center }
   
