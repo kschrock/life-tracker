@@ -22,9 +22,12 @@ const useStyles = makeStyles((theme) => ({
     alignContent: 'center',
     padding: '30px',
     border: "2px solid",
+    borderRadius: 25,
+    marginBottom: 10,
   },
   button:{
     background: "#2CB164",
+    width: 519,
   },
   text:{
     color: "#2CB164",
@@ -41,6 +44,9 @@ export default function Register() {
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
+  const [firstname, setFirstname] = useState('');
+  const [lastname, setLastname] = useState('');
+  const [email, setEmail] = useState('');
 
   const handleOnPasswordTextChange = (event) => {
     setPassword(event.target.value);
@@ -48,6 +54,18 @@ export default function Register() {
   }
   const handleOnUsernameTextChange = (event) => {
     setUsername(event.target.value);
+   // console.log(event.target.value)
+  }
+  const handleOnFirstNameTextChange = (event) => {
+    setFirstname(event.target.value);
+   // console.log(event.target.value)
+  }
+  const handleOnLastNameTextChange = (event) => {
+    setLastname(event.target.value);
+   // console.log(event.target.value)
+  }
+  const handleOnEmailTextChange = (event) => {
+    setEmail(event.target.value);
    // console.log(event.target.value)
   }
 
@@ -86,7 +104,7 @@ export default function Register() {
           label="📧 Email"
           // defaultValue="Enter Username:"
           variant="outlined"
-          onChange={handleOnUsernameTextChange}
+          onChange={handleOnEmailTextChange}
           style = {{width: 519}}
         />
         <TextField
@@ -104,7 +122,7 @@ export default function Register() {
           label="First Name Required"
           // defaultValue="Enter Username:"
           variant="outlined"
-          onChange={handleOnUsernameTextChange}
+          onChange={handleOnFirstNameTextChange}
         />
         <TextField
           required
@@ -112,7 +130,7 @@ export default function Register() {
           label="Last Name Required"
           // defaultValue="Enter Username:"
           variant="outlined"
-          onChange={handleOnUsernameTextChange}
+          onChange={handleOnLastNameTextChange}
         />
         <TextField
         required
@@ -137,7 +155,7 @@ export default function Register() {
        )
        }}
       />
-      <TextField
+      {/* <TextField
         required
         style = {{width: 519}}
         id="confirm-password"
@@ -159,9 +177,9 @@ export default function Register() {
       </InputAdornment>
        )
        }}
-      />
-      <br />
-      <Button display="block" className={classes.button} variant="contained" color="primary"> Submit Form </Button>
+      /> */}
+      
+      <Button display="block" className={classes.button} variant="contained" color="primary"> Sign Up </Button>
       </Card>
          </Grid>
          <Typography>Have an Account? Sign in </Typography>
