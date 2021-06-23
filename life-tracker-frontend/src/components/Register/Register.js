@@ -33,6 +33,12 @@ const useStyles = makeStyles((theme) => ({
     color: "#2CB164",
     fontSize: 35,
     fontWeight:"bold"
+  },
+  drawerWidth: {
+    width: 519,
+    [theme.breakpoints.up(780)]: {
+      width: 300
+    }
   }
 }));
 
@@ -69,22 +75,7 @@ export default function Register() {
    // console.log(event.target.value)
   }
 
-  // const handleOnSubmit = () => {
-  //   // { ...newTweet, id: oldTweets.length, name: userProfile.name, handle: userProfile.handle }
-  //   addTweet({
-  //     id: tweet.id,
-  //     name: tweet.name, 
-  //     handle: tweet.handle,
-  //     text: tweet,
-  //     comments: tweet.comments,
-  //     retweets: tweet.retweets,
-  //     likes: tweet.likes,
-  //   })
-  //   setHidden("False");
-  //   // alert(tweet)
-  //   setTweet("")
-  // }
-
+ 
   return (
     <form className={classes.root} noValidate autoComplete="off">
       <div className="moveFormDown">
@@ -102,7 +93,6 @@ export default function Register() {
           required
           id="email-required"
           label="📧 Email"
-          // defaultValue="Enter Username:"
           variant="outlined"
           onChange={handleOnEmailTextChange}
           style = {{width: 519}}
@@ -111,7 +101,6 @@ export default function Register() {
           required
           id="username-required"
           label="Username Required"
-          // defaultValue="Enter Username:"
           variant="outlined"
           onChange={handleOnUsernameTextChange}
           style = {{width: 519}}
@@ -120,7 +109,6 @@ export default function Register() {
           required
           id="first-name"
           label="First Name Required"
-          // defaultValue="Enter Username:"
           variant="outlined"
           onChange={handleOnFirstNameTextChange}
         />
