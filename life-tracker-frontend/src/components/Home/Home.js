@@ -11,6 +11,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames'; //css and material ui style
+import { useEffect } from "react"
+import { useLocation } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -57,7 +59,19 @@ const useStyles = makeStyles((theme) => ({
       },
 }));
 
-export default function Home() {
+export default function Home({user}) {
+
+  const location = useLocation()
+
+  useEffect(() => {
+    // some silly react router magic to get hash links to work
+    if (location.hash) {
+      const el = document.querySelector(location.hash)
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" })
+      }
+    }
+  }, [location.hash])
 
     const classes = useStyles()
 
