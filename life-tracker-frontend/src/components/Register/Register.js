@@ -2,11 +2,14 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import './Register.css';
 import { Card, Grid, Button } from '@material-ui/core';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { TextField, InputAdornment, IconButton, Typography } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import form from "../../assets/form.png"
+import formPhoto from "../../assets/form.png"
+import { useNavigate, Link } from "react-router-dom"
+import apiClient from "../../services/apiClient"
+
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
@@ -43,36 +46,72 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function Register() {
+export default function Register({user, setUser}) {
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
   const handleMouseDownPassword = () => setShowPassword(!showPassword);
-  const [password, setPassword] = useState('');
-  const [username, setUsername] = useState('');
-  const [firstname, setFirstname] = useState('');
-  const [lastname, setLastname] = useState('');
-  const [email, setEmail] = useState('');
+  const navigate = useNavigate()
+  const [isProcessing, setIsProcessing] = useState(false)
+  const [errors, setErrors] = useState({})
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    // passwordConfirm: "",
+  })
 
-  const handleOnPasswordTextChange = (event) => {
-    setPassword(event.target.value);
-   // console.log(event.target.value)
+  useEffect(() => {
+    // if user is already logged in,
+    // redirect them to the home page
+    if (user?.email) {
+      navigate("/")
+    }
+  }, [user, navigate])
+
+  const handleOnSubmit = async () => {
+    setIsProcessing(true)
+    setErrors((e) => ({ ...e, form: null }))
+
+    // if (form.passwordConfirm !== form.password) {
+    //   setErrors((e) => ({ ...e, passwordConfirm: "Passwords do not match." }))
+    //   setIsProcessing(false)
+    //   return
+    // } else {
+    //   setErrors((e) => ({ ...e, passwordConfirm: null }))
+    // }
+
+    const { data, error} = await apiClient.signupUser({ email: form.email, password: form.password, firstName: form.firstName, lastName: form.lastName})
+    if(error) setErrors((e) => ({ ...e, form: error }))
+    if(data?.user){
+      setUser(data.user)
+      apiClient.setToken(data.token)
+    }
+
+    setIsProcessing(false)
+  
   }
-  const handleOnUsernameTextChange = (event) => {
-    setUsername(event.target.value);
-   // console.log(event.target.value)
-  }
-  const handleOnFirstNameTextChange = (event) => {
-    setFirstname(event.target.value);
-   // console.log(event.target.value)
-  }
-  const handleOnLastNameTextChange = (event) => {
-    setLastname(event.target.value);
-   // console.log(event.target.value)
-  }
-  const handleOnEmailTextChange = (event) => {
-    setEmail(event.target.value);
-   // console.log(event.target.value)
+
+  const handleOnInputChange = (event) => {
+    //console.log(event.target.name)
+    if (event.target.name === "email") {
+      if (event.target.value.indexOf("@") === -1) {
+        setErrors((e) => ({ ...e, email: "Please enter a valid email." }))
+      } else {
+        setErrors((e) => ({ ...e, email: null }))
+      }
+    }
+
+    if (event.target.name === "passwordConfirm") {
+      if (event.target.value !== form.password) {
+        setErrors((e) => ({ ...e, passwordConfirm: "Passwords do not match." }))
+      } else {
+        setErrors((e) => ({ ...e, passwordConfirm: null }))
+      }
+    }
+
+    setForm((f) => ({ ...f, [event.target.name]: event.target.value }))
   }
 
  
@@ -87,47 +126,48 @@ export default function Register() {
       justify="center"
       >
         <Card className={classes.card}>
-          <img className="formImage" src={form} alt="head stick figure"></img>
+          <img className="formImage" src={formPhoto} alt="head stick figure"></img>
         <Typography className={classes.text}>Create an Account</Typography>
       <TextField
           required
+          name="email"
           id="email-required"
           label="📧 Email"
           variant="outlined"
-          onChange={handleOnEmailTextChange}
-          style = {{width: 519}}
-        />
-        <TextField
-          required
-          id="username-required"
-          label="Username Required"
-          variant="outlined"
-          onChange={handleOnUsernameTextChange}
+          value={form.email}
+          onChange={handleOnInputChange}
           style = {{width: 519}}
         />
         <TextField
           required
           id="first-name"
+          name="firstName"
           label="First Name Required"
           variant="outlined"
-          onChange={handleOnFirstNameTextChange}
+          value={form.firstName}
+          onChange={handleOnInputChange}
         />
         <TextField
           required
+          name="lastName"
           id="last-name"
           label="Last Name Required"
           // defaultValue="Enter Username:"
           variant="outlined"
-          onChange={handleOnLastNameTextChange}
+          value={form.lastName}
+          onChange={handleOnInputChange}
         />
         <TextField
         required
         style = {{width: 519}}
         id="password-required"
+        name="password"
         label='Password Required'
         variant="outlined"
+        value={form.password}
+        onChange={handleOnInputChange}
         type={showPassword ? "text" : "password"} // <-- This is where the magic happens
-        onChange={handleOnPasswordTextChange}
+        // onChange={handleOnPasswordTextChange}
         // defaultValue={"Enter Password:"}
         InputProps={{ // <-- This is where the toggle button is added.
           endAdornment: (
@@ -167,10 +207,12 @@ export default function Register() {
        }}
       /> */}
       
-      <Button display="block" className={classes.button} variant="contained" color="primary"> Sign Up </Button>
+      <Button disabled={isProcessing} onClick={handleOnSubmit} display="block" className={classes.button} variant="contained" color="primary">
+      {isProcessing ? "Loading..." : "Create Account"}
+      </Button>
       </Card>
          </Grid>
-         <Typography>Have an Account? Sign in </Typography>
+         <Typography>Have an Account? <Link to="/login">Sign in</Link></Typography>
       </div>
     </form>
   );
