@@ -4,13 +4,12 @@ require("colors")
 
 const db = new Client({ connectionString: getDatabaseUri() })
 
-db.connect((error) => {
-    if(error) {
-        console.error("Connection error".red, error.stack)
-    }
-    else{
-        console.log("Successfully connected to postgres db!".blue)
-    }
+db.connect((err) => {
+  if (err) {
+    console.error("connection error", err.stack)
+  } else {
+    console.log("Successfully connected to postgres database!".blue)
+  }
 })
 
 module.exports = db
