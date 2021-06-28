@@ -7,7 +7,6 @@ import codepath from "../../assets/codepath.svg"
 import classNames from 'classnames'; //css and material ui style
 import { Link } from 'react-router-dom';
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1
@@ -36,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
       textAlign: "center"
     }
   },
+  removeUnderlineLink: {
+    textDecoration: 'none' 
+  },
   paper: {
     height: 140,
     width: 100,
@@ -52,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function ButtonAppBar() {
+export default function ButtonAppBar({user, handleLogout}) {
     const classes = useStyles()
   return (
     
@@ -66,10 +68,10 @@ export default function ButtonAppBar() {
             </Link>
           
         <Grid item xs={2}>
-          <Typography  className={classNames(classes.typography, "test", "topnav-centered")} variant="h5">Activity</Typography> 
+          <Typography className={classNames(classes.typography, "test", "topnav-centered")} variant="h5">Activity</Typography> 
         </Grid> 
         <Grid item xs={2}>
-          <Typography  className={classNames(classes.typography, "test", "topnav-centered")} variant="h5">Exercise</Typography> 
+          <Typography component={ Link } to="/excercise" className={classNames(classes.removeUnderlineLink, classes.typography, "test", "topnav-centered")} variant="h5">Exercise</Typography> 
         </Grid>
         <Grid item xs={2}>
           <Typography  className={classNames(classes.typography, "test", "topnav-centered")} variant="h5">Nutrition</Typography> 
@@ -78,10 +80,12 @@ export default function ButtonAppBar() {
           <Typography  className={classNames(classes.typography, "test", "topnav-centered")} variant="h5">Sleep</Typography>
           </Grid>
           <Grid item xs={1}>
-          <Button className={classes.button} variant="contained" color="primary"> Sign In </Button>
+          {Object.keys(user).length === 0 ?(<Button component={ Link } to="/login" className={classes.button} variant="contained" color="primary"> Sign In </Button>)
+            :(<Button   onClick={  handleLogout } component={ Link } to="/"   className={classes.button}  variant="contained" color="primary">Log Out</Button>)}
           </Grid>
           <Grid item xs={1}>
-          <Button component={ Link } to="/register" className={classes.button}  variant="contained" color="primary">Register</Button>
+            {Object.keys(user).length === 0 ?(<Button component={ Link } to="/register" className={classes.button}  variant="contained" color="primary">Register</Button>)
+            :(<div></div>)}
           </Grid>
           </Grid>
       </Grid>
