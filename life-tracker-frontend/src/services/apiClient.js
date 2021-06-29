@@ -55,6 +55,14 @@ class ApiClient {
         return await this.request({ endpoint: `excercise/`, method: `GET`})
     }
 
+    async createNutritionForUser(nutrition){
+        return await this.request({ endpoint: `nutrition/`, method: `POST`, data : nutrition})
+    }
+
+    async getNutrition(){
+        return await this.request({ endpoint: `nutrition/`, method: `GET`})
+    }
+
     async logoutUser(){
         this.setToken(null)
         localStorage.setItem(this.tokenName, "")
