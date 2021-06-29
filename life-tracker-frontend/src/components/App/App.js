@@ -41,22 +41,38 @@ function App() {
   useEffect(() => {
     const fetchExercises = async () => {
       setIsFetching(true)
+      if(user){
       const {data, error } = await apiClient.getExcercises()
-      if(data) setExcercise(data)
+      if(data) setExcercise(data.excercises)
+      //console.log(data.excercises)
       if(error) setError(error)
       setIsFetching(false)
+    }
     }
     fetchExercises()
   }, [])
 
+  const fetchExercises = async () => {
+    setIsFetching(true)
+    if(user){
+    const {data, error } = await apiClient.getExcercises()
+    if(data) setExcercise(data.excercises)
+    //console.log(data.excercises)
+    if(error) setError(error)
+    setIsFetching(false)
+  }
+  }
+
   const handleLogout = async () => {
     console.log("Logged OUT")
     await apiClient.logoutUser()
-    setUser({})
+    setUser({}) //empty user
+    setExcercise([]) //empty excercise list
     setError(null)
     //console.log(user)
   }
 
+  
   return (
     <div className="App">
      <BrowserRouter>
@@ -69,9 +85,9 @@ function App() {
         isFetching={isFetching}
         />} />
         <Route path="/register" element={<Register user={user} setUser={setUser}/>} />
-        <Route path="/login" element={<Login user={user} setUser={setUser}/>} />
-        <Route path="/excercise" element={<Excercise user={user} setUser={setUser} excercise={excercise}/>} />
-        <Route path="/excercise/create" element={<ExcerciseCreate user={user} setUser={setUser}/>} />
+        <Route path="/login" element={<Login user={user} setUser={setUser} fetchExercises={fetchExercises}/>} />
+        <Route path="/excercise" element={<Excercise user={user} excercise={excercise}/>} />
+        <Route path="/excercise/create" element={<ExcerciseCreate user={user} setUser={setUser} fetchExercises={fetchExercises}/>} />
      </Routes>
      </BrowserRouter>
     </div>
