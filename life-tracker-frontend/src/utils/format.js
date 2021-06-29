@@ -37,6 +37,7 @@ export const formatDateLabel = (date) => {
     var hours = ((hour + 11) % 12) + 1;
     var amPm = hour > 11 ? 'pm' : 'am';
     var time = date + ' ' + month + ' ' + year + ' ' + hours + ':' + min + amPm;
+    if(min<10){min = "0" + min} //adding 00-09
     
     if(year === yyyy && dd === date && currentMonth === month) { time = "Today at " + hours + ':' + min + amPm;}
     if(year === yyyy && dd-1 === date && currentMonth === month) { time = "Yesterday at " + hours + ':' + min + amPm;}
