@@ -18,8 +18,11 @@ export const formatPrice = (amount) => {
 
 export const formatDateLabel = (date) => {
     var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var dd = String(today.getDate()).padStart(2);
+    var mm = String(today.getMonth() + 1).padStart(2); //January is 0!
+    dd = Number(dd)
+    mm = Number(mm)
+    mm = mm -1
     var yyyy = today.getFullYear();
 
     date = new Date(date.replace(' ', 'T'));
@@ -27,15 +30,16 @@ export const formatDateLabel = (date) => {
     var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     var year = a.getFullYear();
     var month = months[a.getMonth()];
-    var date = a.getDate();
+    var currentMonth = months[mm]
+    date = a.getDate();
     var hour = a.getHours();
     var min = a.getMinutes();
-    var sec = a.getSeconds();
     var hours = ((hour + 11) % 12) + 1;
     var amPm = hour > 11 ? 'pm' : 'am';
     var time = date + ' ' + month + ' ' + year + ' ' + hours + ':' + min + amPm;
-    if(year === yyyy && dd === date && mm === month) { time = "Today at " + hours + ':' + min + amPm;}
-    if(year === yyyy && dd-1 === date && mm === month) { time = "Yesterday at " + hours + ':' + min + amPm;}
+    
+    if(year === yyyy && dd === date && currentMonth === month) { time = "Today at " + hours + ':' + min + amPm;}
+    if(year === yyyy && dd-1 === date && currentMonth === month) { time = "Yesterday at " + hours + ':' + min + amPm;}
     
     return time;
 
