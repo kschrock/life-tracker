@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export default function ExcerciseCreate({ user, setUser, fetchExercises }) {
+export default function ExcerciseCreate({ setExcercise }) {
   const classes = useStyles();
   const [isProcessing, setIsProcessing] = useState(false)
   const [errors, setErrors] = useState({})
@@ -97,7 +97,7 @@ export default function ExcerciseCreate({ user, setUser, fetchExercises }) {
      if(event.target.id.includes("duration")) formName = "duration"
      if (newValue !== null){
      setForm((f) => ({ ...f, [formName]: newValue.num}))
-     console.log(event.target.id)
+     //console.log(event.target.id)
      }
      else{
       setForm((f) => ({ ...f, [formName]: ''}))
@@ -105,7 +105,7 @@ export default function ExcerciseCreate({ user, setUser, fetchExercises }) {
     // setInputValue(top100Films[0]);
  };
 
-  console.log(form)
+  //console.log(form)
 
   const handleOnInputChange = (event) => {
     if (event.target.name === "email") {
@@ -115,24 +115,21 @@ export default function ExcerciseCreate({ user, setUser, fetchExercises }) {
         setErrors((e) => ({ ...e, email: null }))
       }
     }
-    console.log(event.target.name)
-    console.log(event.target.value)
+    // console.log(event.target.name)
+    // console.log(event.target.value)
     setForm((f) => ({ ...f, [event.target.name]: event.target.value }))
   }
 
   const handleOnSubmit = async () => {
-    setIsProcessing(true)
+    //setIsProcessing(true)
     setErrors((e) => ({ ...e, form: null }))
-
     const { data, error} = await apiClient.createExcerciseForUser({ name: form.name, category: form.category ,duration: form.duration, intensity: form.intensity})
     if(error) setErrors((e) => ({ ...e, form: error }))
-    if(data?.user){
-      setUser(data.user)
-      apiClient.setToken(data.token)
+    
+    if(data?.excercise){
+      setExcercise( oldArray => [...oldArray, ...data.excercise]) // this copys old array and adds new data excercise
     }  
-    fetchExercises() //update excercises
-    setIsProcessing(false)
-
+    //setIsProcessing(false)
   }
 
   return (
