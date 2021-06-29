@@ -1,8 +1,8 @@
 import { Card, Grid, Button } from '@material-ui/core';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { TextField, Typography } from "@material-ui/core";
 import workout from "../../assets/workout.png"
-import { useNavigate, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import apiClient from "../../services/apiClient"
 
 import React from 'react';
@@ -61,7 +61,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ExcerciseCreate({ user, setUser, fetchExercises }) {
   const classes = useStyles();
-  const navigate = useNavigate()
   const [isProcessing, setIsProcessing] = useState(false)
   const [errors, setErrors] = useState({})
   const [form, setForm] = useState({
@@ -81,12 +80,6 @@ export default function ExcerciseCreate({ user, setUser, fetchExercises }) {
       "num": index+1,
     }
   });
-
-  const [age, setAge] = React.useState('');
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
 
   const oneHundredProps = {
     options: oneHundred,
