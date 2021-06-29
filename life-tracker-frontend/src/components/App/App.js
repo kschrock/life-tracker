@@ -87,7 +87,7 @@ function App() {
         <Route path="/register" element={<Register user={user} setUser={setUser}/>} />
         <Route path="/login" element={<Login user={user} setUser={setUser} fetchExercises={fetchExercises}/>} />
         <Route path="/excercise" element={<Excercise user={user} excercise={excercise}/>} />
-        <Route path="/excercise/create" element={<ExcerciseCreate user={user} setUser={setUser} fetchExercises={fetchExercises}/>} />
+        <Route path="/excercise/create" element={<ExcerciseCreate  setExcercise={setExcercise} />} />
      </Routes>
      </BrowserRouter>
     </div>
