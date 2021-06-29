@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-export default function ExcerciseCreate({ user, setUser }) {
+export default function ExcerciseCreate({ user, setUser, fetchExercises }) {
   const classes = useStyles();
   const navigate = useNavigate()
   const [isProcessing, setIsProcessing] = useState(false)
@@ -137,6 +137,7 @@ export default function ExcerciseCreate({ user, setUser }) {
       setUser(data.user)
       apiClient.setToken(data.token)
     }  
+    fetchExercises() //update excercises
     setIsProcessing(false)
 
   }
