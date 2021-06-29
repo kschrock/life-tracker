@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-export default function Login({ user, setUser }) {
+export default function Login({ user, setUser, fetchExercises }) {
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword(!showPassword);
@@ -89,6 +89,7 @@ export default function Login({ user, setUser }) {
       setUser(data.user)
       apiClient.setToken(data.token)
     }  
+    fetchExercises()
     setIsProcessing(false)
 
   }
