@@ -74,7 +74,7 @@ export default function ButtonAppBar({user, handleLogout}) {
           <Typography component={ Link } to="/excercise" className={classNames(classes.removeUnderlineLink, classes.typography, "test", "topnav-centered")} variant="h5">Exercise</Typography> 
         </Grid>
         <Grid item xs={2}>
-          <Typography  className={classNames(classes.typography, "test", "topnav-centered")} variant="h5">Nutrition</Typography> 
+          <Typography component={ Link } to="/nutrition"  className={classNames(classes.removeUnderlineLink, classes.typography, classes.typography, "test", "topnav-centered")} variant="h5">Nutrition</Typography> 
           </Grid>
           <Grid item xs={2}>
           <Typography  className={classNames(classes.typography, "test", "topnav-centered")} variant="h5">Sleep</Typography>

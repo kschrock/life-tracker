@@ -7,7 +7,9 @@ import Register from '../Register/Register';
 import apiClient from "../../services/apiClient"
 import Login from "../Login/Login"
 import Excercise from "../Excercise/Excercise";
-import ExcerciseCreate from "../CreateExcercise/CreateExcercise";
+import CreateExcercise from "../CreateExcercise/CreateExcercise";
+import Nutrition from "../Nutrition/Nutrition";
+import CreateNutrition from "../CreateNutrition/CreateNutrition"
 
 export const URL = process.env.REACT_APP_REMOTE_HOST_URL || "http://localhost:3001"
 
@@ -16,6 +18,7 @@ function App() {
   const [isFetching, setIsFetching] = useState(false)
   const [error, setError] = useState(null)
   const [excercise, setExcercise] = useState([])
+  const [nutrition, setNutrition] = useState([])
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -49,7 +52,18 @@ function App() {
       setIsFetching(false)
     }
     }
+    const fetchNutrition = async () => {
+      setIsFetching(true)
+      if(user){
+      const {data, error } = await apiClient.getNutrition()
+      if(data) setNutrition(data.nutrition)
+      //console.log(data.excercises)
+      if(error) setError(error)
+      setIsFetching(false)
+    }
+    }
     fetchExercises()
+    fetchNutrition()
   }, [])
 
   const fetchExercises = async () => {
@@ -87,7 +101,9 @@ function App() {
         <Route path="/register" element={<Register user={user} setUser={setUser}/>} />
         <Route path="/login" element={<Login user={user} setUser={setUser} fetchExercises={fetchExercises}/>} />
         <Route path="/excercise" element={<Excercise user={user} excercise={excercise}/>} />
-        <Route path="/excercise/create" element={<ExcerciseCreate  setExcercise={setExcercise} />} />
+        <Route path="/excercise/create" element={<CreateExcercise  setExcercise={setExcercise} />} />
+        <Route path="/nutrition" element={<Nutrition user={user} nutrition={nutrition}/>} />
+        <Route path="/nutrition/create" element={<CreateNutrition  setNutrition={setNutrition} />} />
      </Routes>
      </BrowserRouter>
     </div>
