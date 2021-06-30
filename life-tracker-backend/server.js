@@ -5,10 +5,9 @@ const { PORT } = require("./config")
 const { NotFoundError } = require("./utils/errors")
 const security = require("./middleware/security")
 const authRoutes = require("./routes/auth")
-const storeRoutes = require("./routes/store")
-const orderRoutes = require("./routes/orders")
 const excerciseRoutes = require("./routes/excercises")
 const nutritionRoutes = require("./routes/nutrition")
+const sleepRoutes = require("./routes/sleep")
 
 const app = express()
 
@@ -28,6 +27,7 @@ app.use(security.extractUserFromJwt)
 app.use("/auth", authRoutes)
 app.use("/excercise", excerciseRoutes)
 app.use("/nutrition", nutritionRoutes)
+app.use("/sleep", sleepRoutes)
 
 /** Handle 404 errors -- this matches everything */
 app.use((req, res, next) => {
