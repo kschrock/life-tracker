@@ -63,6 +63,14 @@ class ApiClient {
         return await this.request({ endpoint: `nutrition/`, method: `GET`})
     }
 
+    async createSleepForUser(sleep){
+        return await this.request({ endpoint: `sleep/`, method: `POST`, data : sleep})
+    }
+
+    async getSleep(){
+        return await this.request({ endpoint: `sleep/`, method: `GET`})
+    }
+
     async logoutUser(){
         this.setToken(null)
         localStorage.setItem(this.tokenName, "")
