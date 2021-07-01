@@ -65,22 +65,20 @@ export default function Excercise({ user, excercise }) {
             <Box m={3}>
             <Button  component={ Link } to="/excercise/create" className={classes.button} variant="contained" color="primary">Add Excercise</Button>
             </Box>
-            </div>
-        )}
-        
-          <Grid
+            <Grid
             container
             spacing={0}
             direction="column"
             alignItems="center"
             justify="center"
           >
-          {/* {Object.keys(excercise).length === 0 ?(<div></div>)
-        :( */}
+        
           <CardList excercise={excercise}/>
-         {/* )} */}
-    
           </Grid>
+            </div>
+            
+        )}
+        
         </div>
     )
 }

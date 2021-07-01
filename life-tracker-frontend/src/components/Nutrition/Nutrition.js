@@ -65,10 +65,7 @@ export default function Nutrition({ user, nutrition }) {
             <Box m={3}>
             <Button  component={ Link } to="/nutrition/create" className={classes.button} variant="contained" color="primary">Record Nutrition</Button>
             </Box>
-            </div>
-        )}
-        
-          <Grid
+            <Grid
             container
             spacing={0}
             direction="column"
@@ -78,6 +75,8 @@ export default function Nutrition({ user, nutrition }) {
           
           <CreateListNutrition nutrition={nutrition} />
           </Grid>
+            </div>
+        )}
         </div>
     )
 }
