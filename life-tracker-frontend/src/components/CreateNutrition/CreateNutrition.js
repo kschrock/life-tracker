@@ -79,7 +79,7 @@ export default function CreateNutrition({ setNutrition }) {
       }
     }
     // console.log(event.target.name)
-     console.log(event.target.value)
+   //  console.log(event.target.value)
     setForm((f) => ({ ...f, [event.target.name]: event.target.value }))
   }
 
@@ -89,8 +89,8 @@ export default function CreateNutrition({ setNutrition }) {
     const { data, error} = await apiClient.createNutritionForUser({ name: form.name, category: form.category ,quantity: form.quantity, calories: form.calories, image_url: form.image_url})
     if(error) setErrors((e) => ({ ...e, form: error }))
     
-    if(data?.excercise){
-      setNutrition( oldArray => [...oldArray, ...data.setNutrition]) // this copys old array and adds new data Nutrition
+    if(data?.nutrition){
+      setNutrition( oldArray => [...oldArray, ...data.nutrition]) // this copys old array and adds new data Nutrition
     }  
     //setIsProcessing(false)
   }
@@ -170,7 +170,7 @@ export default function CreateNutrition({ setNutrition }) {
           style = {{width: 519}}
         />  
        
-      <Button component={ Link } to="/excercise" disabled={isProcessing} onClick={handleOnSubmit} display="block" className={classes.button} variant="contained" color="primary">
+      <Button component={ Link } to="/nutrition" disabled={isProcessing} onClick={handleOnSubmit} display="block" className={classes.button} variant="contained" color="primary">
       {isProcessing ? "Loading..." : "Save Food"}
       </Button>
       </Card>
