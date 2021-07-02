@@ -56,22 +56,24 @@ Implement any of the following features to improve the application:
 
 * Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-[Add your response here]
+I felt that the labs for testing and use context were not needed, but good to learn. I had to focus on the assigment, so I have to go back and rewatch those 2 labs to understand them. Otherwise, I did feel like all the previous labs were needed to understand in order to get this project done. I felt the most underprepared on fetching data, by this I mean when to update the states. I do understand how to make API calls, I just need to know more on when to update states.
 
 * If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-[Add your response here]
+If I had one more time to go back, I would focus on how to change the usestate in a better modular way. I would also try to implement more of the Activty Strech Featuers, add and endpoint to get by ID and display by ID, and lastly I would implement allowing to filter by dates.
 
 * Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-[Add your response here]
+Overall, I think everything went well! Over the past few weeks, my coding skills for full-stack has been getting better immensly! My peer implemented useContext which is something I would liked have done. 
+
+Using Matieral UI, I was able to create components really fast and style with CSS. 
 
 ### Open-source libraries used
 
 - Add any links to open-source libraries used in your project.
+- [Materail UI](https://material-ui.com/)
 
 ### Shout out
-
-Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
-
-[Add your response here]
+### Matt & Ellie for the great lectures/debugging!
+### Talyor for her postive message during!
+### Raahima, Tirumari, Paige for helping students debug!
