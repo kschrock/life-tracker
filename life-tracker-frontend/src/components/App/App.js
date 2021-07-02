@@ -12,6 +12,7 @@ import Nutrition from "../Nutrition/Nutrition";
 import CreateNutrition from "../CreateNutrition/CreateNutrition"
 import Sleep from "../Sleep/Sleep";
 import CreateSleep from "../CreateSleep/CreateSleep";
+import Activity from "../Activity/Activity";
 
 export const URL = process.env.REACT_APP_REMOTE_HOST_URL || "http://localhost:3001"
 
@@ -21,7 +22,10 @@ function App() {
   const [error, setError] = useState(null)
   const [excercise, setExcercise] = useState([])
   const [nutrition, setNutrition] = useState([])
+  const [excerciseTotal, setExcerciseTotal] = useState(0)
+  const [sleepAverage, setsleepAverage] = useState(0)
   const [sleep, setSleep] = useState([])
+  const [dailyCalorieAverage, setDailyCalorieAverage] = useState(0)
 
   const fetchExercises = async () => {
     setIsFetching(true)
@@ -54,6 +58,46 @@ function App() {
   }
 }
 
+const fetchSumExcercises = async () => {
+  setIsFetching(true)
+  const { data, error } = await apiClient.getExcercisesTotal()
+  //console.log(data.excercises[0].total_time)
+  if(data.excercises[0].total_time) setExcerciseTotal(data.excercises[0].total_time)
+  if(error) setError(error)
+  setIsFetching(false)
+}
+
+const fetchAverageSleep = async () => {
+  setIsFetching(true)
+  const { data, error } = await apiClient.getAverageSleep()
+  // console.log(data.sleep[0].avg_difference)
+  if(data.sleep[0].avg_difference) setsleepAverage(data.sleep[0].avg_difference)
+  if(error) setError(error)
+  setIsFetching(false)
+}
+
+const fetchAverageCalories = async () => {
+  setIsFetching(true)
+  const { data, error } = await apiClient.getAverageDailyNutrition()
+  // console.log(data.nutrition)
+  // console.log(typeof(data.nutrition))
+  if(data){
+    let sum =0
+    data.nutrition.forEach(element => {
+      sum += Number(element.avg)
+    });
+    let averageSum = sum/data.nutrition.length
+    if(data.nutrition.length === 0) {
+      averageSum = 0
+    }
+    setDailyCalorieAverage(averageSum)
+
+}
+  // if(error) setError(error)
+  setIsFetching(false)
+}
+
+
   useEffect(() => {
     const fetchUser = async () => {
       setIsFetching(true)
@@ -64,6 +108,7 @@ function App() {
 
       setIsFetching(false)
     }
+    
 
     const token = localStorage.getItem("life_tracker_token")
     // console.log("here:,", token)
@@ -85,6 +130,9 @@ function App() {
       fetchExercises()
       fetchNutrition()
       fetchSleep()
+      fetchSumExcercises()
+      fetchAverageSleep()
+      fetchAverageCalories()
     }
     }, [user])
 
@@ -98,7 +146,10 @@ function App() {
     setUser({}) //empty user
     setExcercise([]) //empty excercise list
     setNutrition([])//empty nutrition list
+    setsleepAverage(0)
+    setExcerciseTotal(0)
     setError(null)
+    setSleep([])
     //console.log(user)
   }
 
@@ -122,6 +173,11 @@ function App() {
         <Route path="/nutrition/create" element={<CreateNutrition  setNutrition={setNutrition} />} />
         <Route path="/sleep" element={<Sleep user={user} sleep={sleep} />} />
         <Route path="/sleep/create" element={<CreateSleep  setSleep={setSleep} />} />
+        <Route path="/activity" element={<Activity 
+        sleepAverage={sleepAverage}
+        excerciseTotal={excerciseTotal}
+        dailyCalorieAverage={dailyCalorieAverage}
+        user={user} />} />
      </Routes>
      </BrowserRouter>
     </div>
