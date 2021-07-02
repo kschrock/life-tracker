@@ -21,6 +21,19 @@ class Nutrition {
         return result.rows
       }
 
+    static async getAverageDailyCalorie(user) {
+      const query = `
+      SELECT AVG (nutrition.calories) AS "avg", timestamp::date AS "date"
+        FROM nutrition
+          JOIN users ON users.id = nutrition.user_id
+        WHERE nutrition.user_id = (SELECT id FROM users WHERE email = $1)
+        GROUP BY timestamp::date;
+      `
+      const result = await db.query(query, [user.email])
+  
+      return result.rows
+    }
+
     static async fetchNutritionById(nutritionId) {
         const result = await db.query(
           `

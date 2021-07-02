@@ -13,6 +13,16 @@ router.get("/", security.requireAuthenticatedUser, async (req, res, next) => {
     }
   })
 
+  router.get("/average", security.requireAuthenticatedUser, async (req, res, next) => {
+    try {
+      const user = res.locals.user
+      const nutrition = await Nutrition.getAverageDailyCalorie(user)
+      return res.status(200).json({ nutrition })
+    } catch (err) {
+      next(err)
+    }
+  })
+
 
 router.post("/", security.requireAuthenticatedUser, async (req, res, next) => {
     try {
