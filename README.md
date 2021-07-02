@@ -47,6 +47,8 @@ Implement any of the following features to improve the application:
 
 ![](https://media.giphy.com/media/x6nkqN4lZEbfifjiOC/giphy.gif)
 **Creating Excercise**
+
+![](https://media.giphy.com/media/6OiOYceMz8X0HNC0ye/giphy.gif)
 **Signout**
 **After Signout, show no data is availble**
 
