@@ -60,9 +60,6 @@ Implement any of the following features to improve the application:
 ![](https://media.giphy.com/media/MsV3b9P7e83FW59uPy/giphy.gif)
 **Updated Activity and logout showing you must be logged in for data**
 
-![](https://media.giphy.com/media/6OiOYceMz8X0HNC0ye/giphy.gif)
-**Signout**
-**After Signout, show no data is availble**
 
 ### Reflection
 
