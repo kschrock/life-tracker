@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3ee05d89.chunk.css",
+    "main.js": "/static/js/main.d31e5434.chunk.js",
+    "main.js.map": "/static/js/main.d31e5434.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.45c1cacc.js",
+    "runtime-main.js.map": "/static/js/runtime-main.45c1cacc.js.map",
+    "static/js/2.72b26bff.chunk.js": "/static/js/2.72b26bff.chunk.js",
+    "static/js/2.72b26bff.chunk.js.map": "/static/js/2.72b26bff.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.3ee05d89.chunk.css.map": "/static/css/main.3ee05d89.chunk.css.map",
+    "static/js/2.72b26bff.chunk.js.LICENSE.txt": "/static/js/2.72b26bff.chunk.js.LICENSE.txt",
+    "static/media/codepath.70a9a31f.svg": "/static/media/codepath.70a9a31f.svg",
+    "static/media/fitness.c673bb9d.jpeg": "/static/media/fitness.c673bb9d.jpeg",
+    "static/media/food.25951e74.jpeg": "/static/media/food.25951e74.jpeg",
+    "static/media/form.df74a849.png": "/static/media/form.df74a849.png",
+    "static/media/formFood.9710dd50.png": "/static/media/formFood.9710dd50.png",
+    "static/media/planner.2f4e9d5a.jpg": "/static/media/planner.2f4e9d5a.jpg",
+    "static/media/rest.b9eb3fea.jpeg": "/static/media/rest.b9eb3fea.jpeg",
+    "static/media/sleep.d0e9c2c4.png": "/static/media/sleep.d0e9c2c4.png",
+    "static/media/watch.9bd8c3ce.jpeg": "/static/media/watch.9bd8c3ce.jpeg",
+    "static/media/workout.0d8de864.png": "/static/media/workout.0d8de864.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.45c1cacc.js",
+    "static/js/2.72b26bff.chunk.js",
+    "static/css/main.3ee05d89.chunk.css",
+    "static/js/main.d31e5434.chunk.js"
+  ]
+}
