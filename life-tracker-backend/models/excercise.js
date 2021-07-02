@@ -20,6 +20,18 @@ class Excercise {
         return result.rows
       }
 
+      static async getTotalExcerciseUser(user) {
+        const query = `
+          SELECT SUM (excercises.duration) as "total_time"
+          FROM excercises
+            JOIN users ON users.id = excercises.user_id
+          WHERE excercises.user_id = (SELECT id FROM users WHERE email = $1)
+        `
+        const result = await db.query(query, [user.email])
+    
+        return result.rows
+      }
+
     static async fetchExcerciseById(excerciseId) {
         const result = await db.query(
           `
