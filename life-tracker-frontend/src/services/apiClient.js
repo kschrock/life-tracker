@@ -55,6 +55,10 @@ class ApiClient {
         return await this.request({ endpoint: `excercise/`, method: `GET`})
     }
 
+    async getExcercisesTotal(){
+        return await this.request({ endpoint: `excercise/sum`, method: `GET`})
+    }
+
     async createNutritionForUser(nutrition){
         return await this.request({ endpoint: `nutrition/`, method: `POST`, data : nutrition})
     }
@@ -63,12 +67,20 @@ class ApiClient {
         return await this.request({ endpoint: `nutrition/`, method: `GET`})
     }
 
+    async getAverageDailyNutrition(){
+        return await this.request({ endpoint: `nutrition/average`, method: `GET`})
+    }
+
     async createSleepForUser(sleep){
         return await this.request({ endpoint: `sleep/`, method: `POST`, data : sleep})
     }
 
     async getSleep(){
         return await this.request({ endpoint: `sleep/`, method: `GET`})
+    }
+
+    async getAverageSleep(){
+        return await this.request({ endpoint: `sleep/average`, method: `GET`})
     }
 
     async logoutUser(){
