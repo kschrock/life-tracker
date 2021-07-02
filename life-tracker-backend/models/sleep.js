@@ -18,6 +18,18 @@ class Sleep {
         return result.rows
       }
 
+      static async getAverageSleepUser(user) {
+        const query = `
+          SELECT ROUND( CAST ( (AVG ( EXTRACT(EPOCH FROM (sleep.end_time - sleep.start_time)))) /3600 AS numeric)  , 2) as "avg_difference"
+          FROM sleep
+            JOIN users ON users.id = sleep.user_id
+          WHERE sleep.user_id = (SELECT id FROM users WHERE email = $1)
+        `
+        const result = await db.query(query, [user.email])
+    
+        return result.rows
+      }
+
     static async fetchSleepById(sleepId) {
         const result = await db.query(
           `
