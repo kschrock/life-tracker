@@ -45,8 +45,20 @@ Implement any of the following features to improve the application:
 **Navbar**
 **Activity, Excercise, Nutrition, Sleep**
 
-![](https://media.giphy.com/media/x6nkqN4lZEbfifjiOC/giphy.gif)
-**Creating Excercise**
+![](https://media.giphy.com/media/uwhAbh2nB6ca6IB2re/giphy.gif)
+**Register User**
+
+![](https://media.giphy.com/media/coZLcv0Ig2yF3ODqDH/giphy.gif)
+**Create Excercise**
+
+![](https://media.giphy.com/media/HBUSz0cyWGcMStz9Mn/giphy.gif)
+**Create Nutrition**
+
+![](https://media.giphy.com/media/GwMnSq7qyZyq06yiFL/giphy.gif)
+**Create Sleep**
+
+![](https://media.giphy.com/media/MsV3b9P7e83FW59uPy/giphy.gif)
+**Updated Activity and logout showing you must be logged in for data**
 
 ![](https://media.giphy.com/media/6OiOYceMz8X0HNC0ye/giphy.gif)
 **Signout**
@@ -75,5 +87,5 @@ Using Matieral UI, I was able to create components really fast and style with CS
 
 ### Shout out
 ### Matt & Ellie for the great lectures/debugging!
-### Talyor for her postive message during!
+### Talyor for her postive message during the week!
 ### Raahima, Tirumari, Paige for helping students debug!
