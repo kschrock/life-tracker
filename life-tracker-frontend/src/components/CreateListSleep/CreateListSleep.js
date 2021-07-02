@@ -29,12 +29,17 @@ const useStyles = makeStyles({
       textAlign: 'center',
       width: 345,
       borderRadius: 10,
-      backgroundColor: "#4C7EE5",
+      backgroundColor: "#4D60EF",
       color: "#FFFFFF",
     },
     title: {
       color: "#FFFFFF",
       fontSize: 35,
+      fontWeight: 600 // or 'bold'
+    },
+    timetitle: {
+      color: "#FFFFFF",
+      fontSize: 30,
       fontWeight: 600 // or 'bold'
     },
     subTitle: {
@@ -48,6 +53,7 @@ const useStyles = makeStyles({
     timeStamp: {
       fontSize: 15
     },
+    
    
   });
 
@@ -69,7 +75,7 @@ const useStyles = makeStyles({
         <CardContent className={classes.cardContentContainer}>
         <Box  borderRadius={10}>
        <Typography align="center" className={classNames(classes.title)} >
-       {formatDateLabelNoTime(robot.postedAt)}
+       {formatDateLabelNoTime(robot.start_time)}
         </Typography>
         </Box>
         <Box
@@ -85,7 +91,7 @@ const useStyles = makeStyles({
        <Typography align="center" className={classNames(classes.subTitle)} >
        Start Time
         </Typography>
-        <Typography align="center" className={classNames(classes.subTitle)} >
+        <Typography align="center" className={classNames(classes.timetitle)} >
         {formatDateLabelOnlyTime(robot.start_time)}
         </Typography>
    </Box>
@@ -93,13 +99,13 @@ const useStyles = makeStyles({
        <Typography align="center" className={classNames(classes.subTitle)} >
        End Time
         </Typography>
-        <Typography align="center" className={classNames(classes.subTitle)} >
+        <Typography align="center" className={classNames(classes.timetitle)} >
         {formatDateLabelOnlyTime(robot.end_time)}
         </Typography>
    </Box>
    <Box justifyContent="center" alignItems="center" p={1}  borderRadius={10}>
        <Typography align="center" className={classNames(classes.timeStamp)} >
-       {getTimeFromDates(robot.start_time,robot.end_time)} Hours
+       {getTimeFromDates(robot.start_time,robot.end_time)} hours
         </Typography>
    </Box>
    </Box>  

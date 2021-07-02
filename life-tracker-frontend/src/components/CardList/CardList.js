@@ -30,7 +30,7 @@ const useStyles = makeStyles({
       textAlign: 'center',
       minWidth: 345,
       borderRadius: 10,
-      backgroundColor: "#2CB164",
+      backgroundColor: "#FFAA06",
       color: "#FFFFFF",
     },
     title: {
@@ -79,7 +79,7 @@ const useStyles = makeStyles({
    justifyContent = 'space-between'
    borderRadius={10}
  >
-   <Box p={1} bgcolor="#2CB164" borderRadius={10}>
+   <Box p={1} bgcolor="#FFAA06" borderRadius={10}>
        <Typography align="center" className={classNames(classes.subTitle)} >
         Duration
         </Typography>
@@ -87,7 +87,7 @@ const useStyles = makeStyles({
         {robot.duration}
         </Typography>
    </Box>
-   <Box p={1} bgcolor="#2CB164" borderRadius={10} mb={4}>
+   <Box p={1} bgcolor="#FFAA06" borderRadius={10} mb={4}>
        <Typography align="center" className={classNames(classes.subTitle)} >
        Intensity
         </Typography>
@@ -95,12 +95,12 @@ const useStyles = makeStyles({
         {robot.intensity}
         </Typography>
    </Box>
-   <Box justifyContent="center" alignItems="center" p={1} bgcolor="#2CB164" borderRadius={10}>
+   <Box justifyContent="center" alignItems="center" p={1} bgcolor="#FFAA06" borderRadius={10}>
        <Typography align="center" className={classNames(classes.timeStamp)} >
        {formatDateLabel(robot.postedAt)}
         </Typography>
    </Box>
-   <Box justifyContent="center" alignItems="center" border={1} p={.5} px={1} bgcolor="#2CB164" borderRadius={10}>
+   <Box justifyContent="center" alignItems="center" border={1} p={.5} px={1} bgcolor="#FFAA06" borderRadius={10}>
        <Typography align="center" className={classNames(classes.subTitle)} >
        {robot.category}
         </Typography>

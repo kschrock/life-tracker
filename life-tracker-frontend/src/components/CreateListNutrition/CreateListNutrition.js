@@ -30,8 +30,8 @@ const useStyles = makeStyles({
       textAlign: 'center',
       width: 345,
       borderRadius: 10,
-      backgroundColor: "#1ECBE1",
-      color: "#FFFFFF",
+      backgroundColor: "#06C4D0",
+      color: "#FFFFFF"
     },
     title: {
       color: "#FFFFFF",

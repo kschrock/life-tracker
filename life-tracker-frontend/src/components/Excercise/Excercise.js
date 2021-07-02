@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     maxWidth: 500,
   },
   background:{
-    backgroundColor: "#2CB164",
+    backgroundColor: "#FFAA06",
     color: "#FFFFFF",
     borderRadius: 25,
   },
