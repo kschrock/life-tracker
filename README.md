@@ -39,6 +39,9 @@ Implement any of the following features to improve the application:
 
 ### Walkthrough Video
 
+![](https://media.giphy.com/media/Ku0dpzfUIGzu5RT5ri/giphy.gif)
+**Showing Security Token, every backend method requires token**
+
 ![](https://media.giphy.com/media/ZybjBVxhhmO3YkFGcF/giphy.gif)
 **Main Page w/ main layout/functions**
 **Login**
